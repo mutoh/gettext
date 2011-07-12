@@ -54,7 +54,12 @@ module GetText
 
         load_path = $LOAD_PATH.dup
         if defined? ::Gem
-          load_path += Gem.all_load_paths
+          paths_to_latest_gems = []
+          latest_specs = Gem::Specification.each do |spec|
+            paths_to_latest_gems << spec.gem_dir if spec.activated
+          end
+
+          load_path += paths_to_latest_gems
         end
         load_path.map!{|v| v.match(/(.*?)(\/lib)*?$/); $1}
         load_path.each {|path|
