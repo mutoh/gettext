@@ -37,4 +37,5 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<locale>, [">= 0"])
     s.add_dependency(%q<echoe>, [">= 0"])
   end
+  s.add_dependency(%q<rubygems-update>, [">= 1.8.0"])
 end
