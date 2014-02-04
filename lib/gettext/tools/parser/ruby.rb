@@ -140,7 +140,9 @@ module GetText
         begin
           case tk
           when RubyToken::TkIDENTIFIER, RubyToken::TkCONSTANT
-            store_pomessage(pomessages, pomessage, path, line_no, last_comment)
+            if store_pomessage(pomessages, pomessage, path, line_no, last_comment)
+              last_comment = ""
+            end
             if ID.include?(tk.name)
               pomessage = PoMessage.new(:normal)
             elsif PLURAL_ID.include?(tk.name)
@@ -162,6 +164,7 @@ module GetText
           else
             if store_pomessage(pomessages, pomessage, path, line_no, last_comment)
               pomessage = nil
+              last_comment = ""
             end
           end
         rescue

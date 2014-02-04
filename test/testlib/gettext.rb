@@ -98,6 +98,8 @@ EOF
       # This is an example from GNU gettext documentation.
       _("Francois Pinard"))
 
+    puts (_("This translation should not have a comment."))
+
     puts (
       # This comment should not be extracted because it does
       # not start with 'TRANSLATORS:'
